@@ -1,0 +1,21 @@
+package com.vasilevkin.fragmentsroom.utils
+
+import android.content.Context
+import android.widget.ImageView
+import com.bumptech.glide.Glide
+import com.vasilevkin.fragmentsroom.R
+import com.vasilevkin.fragmentsroom.features.animalList.IMainContract
+import com.vasilevkin.fragmentsroom.network.CatInterface
+import com.vasilevkin.fragmentsroom.network.ServiceGetter
+
+
+fun getDataServiceCommon(): CatInterface = ServiceGetter.getDataService()
+
+fun downloadImageInView(context: IMainContract.View?, view: ImageView, url: String) {
+    Glide
+        .with(context as Context)
+        .load(url)
+        .placeholder(R.mipmap.ic_launcher)
+        .error(R.mipmap.ic_launcher)
+        .into(view)
+}
