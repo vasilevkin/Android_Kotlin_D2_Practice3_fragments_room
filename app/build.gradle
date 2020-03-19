@@ -37,6 +37,9 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
     implementation "androidx.recyclerview:recyclerview:$android_components_version"
     implementation "com.google.android.material:material:$android_components_version"
+    implementation "androidx.legacy:legacy-support-v4:$legacy_support_v4_version"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
 
     // For tests
     testImplementation "junit:junit:$junit_version"
