@@ -10,6 +10,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ServiceGetter {
 
+    private const val base_dog_url = "https://dog.ceo/api/"
+
     private val loggingInterceptor = run {
         val httpLoggingInterceptor = HttpLoggingInterceptor()
         httpLoggingInterceptor.apply {
@@ -26,9 +28,16 @@ object ServiceGetter {
         .client(okClientInstance.build())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .addConverterFactory(GsonConverterFactory.create(gson))
-        .baseUrl("https://api.thecatapi.com/").build()
 
     fun getDataService(): CatInterface {
-        return retrofit.create(CatInterface::class.java)
+        return retrofit
+            .baseUrl("https://api.thecatapi.com/").build()
+            .create(CatInterface::class.java)
+    }
+
+    fun getDogDataService(): DogInterface {
+        return retrofit
+            .baseUrl(base_dog_url).build()
+            .create(DogInterface::class.java)
     }
 }

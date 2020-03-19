@@ -6,10 +6,13 @@ import com.bumptech.glide.Glide
 import com.vasilevkin.fragmentsroom.R
 import com.vasilevkin.fragmentsroom.features.animalList.IMainContract
 import com.vasilevkin.fragmentsroom.network.CatInterface
+import com.vasilevkin.fragmentsroom.network.DogInterface
 import com.vasilevkin.fragmentsroom.network.ServiceGetter
 
 
 fun getDataServiceCommon(): CatInterface = ServiceGetter.getDataService()
+
+fun getDogDataServiceCommon(): DogInterface = ServiceGetter.getDogDataService()
 
 fun downloadImageInView(context: IMainContract.View?, view: ImageView, url: String) {
     Glide
