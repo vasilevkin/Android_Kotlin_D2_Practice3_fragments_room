@@ -14,7 +14,7 @@ fun getDataServiceCommon(): CatInterface = ServiceGetter.getDataService()
 
 fun getDogDataServiceCommon(): DogInterface = ServiceGetter.getDogDataService()
 
-fun downloadImageInView(context: IMainContract.View?, view: ImageView, url: String) {
+fun downloadImageInView(context: Context, view: ImageView, url: String) {
     Glide
         .with(context as Context)
         .load(url)
