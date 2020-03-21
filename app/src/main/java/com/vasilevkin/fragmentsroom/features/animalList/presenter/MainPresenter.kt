@@ -13,6 +13,7 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.internal.schedulers.IoScheduler
 
 
+/*
 class MainPresenter(
     view: IMainContract.View,
     private val animalRepository: IAnimalRepository
@@ -93,3 +94,4 @@ class MainPresenter(
             }
     }
 }
+*/

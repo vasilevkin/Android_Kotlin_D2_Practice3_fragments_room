@@ -9,6 +9,7 @@ import com.vasilevkin.fragmentsroom.R
 import com.vasilevkin.fragmentsroom.base.BaseActivity
 import com.vasilevkin.fragmentsroom.features.animalList.view.ui.MainActivity
 import com.vasilevkin.fragmentsroom.features.splash.ISplashContract
+import com.vasilevkin.fragmentsroom.utils.splashScreenShowDelay
 import io.reactivex.Completable
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
@@ -32,7 +33,7 @@ class SplashActivity : BaseActivity<ISplashContract.Presenter>(), ISplashContrac
         setContentView(R.layout.activity_splash)
 
         Completable.complete()
-            .delay(2, TimeUnit.SECONDS)
+            .delay(splashScreenShowDelay, TimeUnit.SECONDS)
             .doOnComplete { startMainActivity() }
             .subscribe()
     }

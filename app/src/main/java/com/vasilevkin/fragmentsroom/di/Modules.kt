@@ -1,7 +1,6 @@
 package com.vasilevkin.fragmentsroom.di
 
 import com.vasilevkin.fragmentsroom.features.animalList.IMainContract
-import com.vasilevkin.fragmentsroom.features.animalList.presenter.MainPresenter
 import com.vasilevkin.fragmentsroom.features.splash.ISplashContract
 import com.vasilevkin.fragmentsroom.features.splash.presenter.SplashPresenter
 import com.vasilevkin.fragmentsroom.repository.AnimalRepository
@@ -14,9 +13,9 @@ val animalListModule = module {
     // single instance of IAnimalRepository
     single<IAnimalRepository> { AnimalRepository() }
 
-    factory<IMainContract.Presenter> { (view: IMainContract.View) ->
-        MainPresenter(view, get())
-    }
+//    factory<IMainContract.Presenter> { (view: IMainContract.View) ->
+//        MainPresenter(view, get())
+//    }
 }
 
 val splashModule = module {
