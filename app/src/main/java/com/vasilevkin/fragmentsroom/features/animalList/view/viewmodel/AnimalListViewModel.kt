@@ -61,15 +61,19 @@ class AnimalListViewModel : ViewModel() {
                     when (i % numberOfUniqueItems) {
                         0 -> item = LongHorizontalCatLocalModel(
                             view,
-                            cats[i].title.orEmpty(),
-                            cats[i].subtitle.orEmpty(),
-                            cats[i].imageUrl.orEmpty()
+                            Animal(
+                                cats[i].title.orEmpty(),
+                                cats[i].subtitle.orEmpty(),
+                                cats[i].imageUrl.orEmpty()
+                            )
                         )
                         1, 2 -> item = SquareCatLocalModel(
                             view,
-                            cats[i].title.orEmpty(),
-                            cats[i].subtitle.orEmpty(),
-                            cats[i].imageUrl.orEmpty()
+                            Animal(
+                                cats[i].title.orEmpty(),
+                                cats[i].subtitle.orEmpty(),
+                                cats[i].imageUrl.orEmpty()
+                            )
                         )
                         5 -> item = BigViewpagerLocalModel(
                             view, arrayListOf(
@@ -111,9 +115,7 @@ class AnimalListViewModel : ViewModel() {
         for (i in 0 until emptyAnimalArraySize) {
             val item = SquareCatLocalModel(
                 view as Context,
-                "Title$i",
-                "Description$i",
-                ""
+                Animal("Title$i", "Description$i", "")
             )
             objects.add(item)
         }

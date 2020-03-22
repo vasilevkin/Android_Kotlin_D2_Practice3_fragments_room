@@ -12,9 +12,9 @@ class SquareDelegateAdapter : KDelegateAdapter<SquareCatLocalModel>() {
 
     override fun onBind(item: SquareCatLocalModel, viewHolder: KViewHolder) =
         with(viewHolder) {
-            title_text_view.text = item.title
-            subtitle_text_view.text = item.subtitle
-            downloadImageInView(item.context, itemView.details_image, item.imageUrl)
+            title_text_view.text = item.animal.title
+            subtitle_text_view.text = item.animal.subtitle
+            downloadImageInView(item.context, itemView.details_image, item.animal.imageUrl.orEmpty())
         }
 
     override fun isForViewType(items: List<*>, position: Int) =

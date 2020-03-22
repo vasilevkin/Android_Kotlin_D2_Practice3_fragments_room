@@ -2,15 +2,13 @@ package com.vasilevkin.fragmentsroom.models.localModels
 
 import android.content.Context
 import com.vasilevkin.fragmentsroom.delegateadapter.diff.IComparableItem
-import com.vasilevkin.fragmentsroom.features.animalList.IMainContract
 
 
 class LongHorizontalCatLocalModel(
     val context: Context,
-    val title: String,
-    val subtitle: String,
-    val imageUrl: String
+    val animal: Animal
 ) : IComparableItem {
-    override fun id(): Any = title
-    override fun content(): Any = title + subtitle + imageUrl
+    override fun id(): Any = animal.title.toString()
+    override fun content(): Any =
+        animal.title.toString() + animal.subtitle.toString() + animal.imageUrl.toString()
 }
