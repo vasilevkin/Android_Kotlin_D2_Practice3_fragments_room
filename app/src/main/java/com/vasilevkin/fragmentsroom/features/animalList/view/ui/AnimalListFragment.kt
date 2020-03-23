@@ -17,6 +17,7 @@ import com.vasilevkin.fragmentsroom.features.animalList.view.viewmodel.AnimalLis
 import com.vasilevkin.fragmentsroom.features.animalList.view.adapter.BigViewpagerDelegateAdapter
 import com.vasilevkin.fragmentsroom.features.animalList.view.adapter.LongHorizontalDelegateAdapter
 import com.vasilevkin.fragmentsroom.features.animalList.view.adapter.SquareDelegateAdapter
+import com.vasilevkin.fragmentsroom.models.localModels.Animal
 import com.vasilevkin.fragmentsroom.utils.numberOfItemsInRecycler
 import io.reactivex.disposables.Disposable
 
@@ -28,13 +29,31 @@ class AnimalListFragment : Fragment() {
             AnimalListFragment()
     }
 
+    interface OnAnimalSelected {
+        fun onSelected(animal: Animal)
+    }
+
     private lateinit var viewModel: AnimalListViewModel
     private var cats: List<IComparableItem> = emptyList()
     private lateinit var diffAdapter: DiffUtilCompositeAdapter
     private var catList: RecyclerView? = null
     private var disposable: Disposable? = null
 
+    private lateinit var listener: OnAnimalSelected
+
     // Fragment Lifecycle methods
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        if (context is OnAnimalSelected) {
+            listener = context
+        } else {
+            throw ClassCastException(
+                "$context must implement OnAnimalSelected."
+            )
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.animal_list_fragment, container, false)

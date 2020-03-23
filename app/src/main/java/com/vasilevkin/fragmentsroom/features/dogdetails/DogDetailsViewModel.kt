@@ -1,7 +1,10 @@
 package com.vasilevkin.fragmentsroom.features.dogdetails
 
 import androidx.lifecycle.ViewModel
+import com.vasilevkin.fragmentsroom.models.localModels.Animal
+
 
 class DogDetailsViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+
+    var animal: Animal? = null
 }
