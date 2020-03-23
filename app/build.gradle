@@ -40,6 +40,8 @@ dependencies {
     implementation "androidx.legacy:legacy-support-v4:$legacy_support_v4_version"
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
 
     // For tests
     testImplementation "junit:junit:$junit_version"
