@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.vasilevkin.fragmentsroom.R
 import com.vasilevkin.fragmentsroom.models.localModels.Animal
-import com.vasilevkin.fragmentsroom.utils.animalDetailsModel
+import com.vasilevkin.fragmentsroom.utils.ANIMAL_DETAILS_MODEL
 import kotlinx.android.synthetic.main.dog_details_fragment.*
 
 class DogDetailsFragment : Fragment() {
@@ -16,7 +16,7 @@ class DogDetailsFragment : Fragment() {
     companion object {
         fun newInstance(animalModel: Animal): DogDetailsFragment {
             val args = Bundle()
-            args.putSerializable(animalDetailsModel, animalModel)
+            args.putSerializable(ANIMAL_DETAILS_MODEL, animalModel)
             val fragment = DogDetailsFragment()
             fragment.arguments = args
             return fragment
@@ -35,7 +35,7 @@ class DogDetailsFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         viewModel = ViewModelProviders.of(this).get(DogDetailsViewModel::class.java)
-        viewModel.animal = arguments?.getSerializable(animalDetailsModel) as Animal
+        viewModel.animal = arguments?.getSerializable(ANIMAL_DETAILS_MODEL) as Animal
     }
 
     override fun onStart() {

@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.vasilevkin.fragmentsroom.R
 import com.vasilevkin.fragmentsroom.features.dogdetails.DogDetailsFragment
 import com.vasilevkin.fragmentsroom.models.localModels.Animal
-import com.vasilevkin.fragmentsroom.utils.tagAnimalListFragment
-import com.vasilevkin.fragmentsroom.utils.tagDogDetailsFragment
+import com.vasilevkin.fragmentsroom.utils.TAG_ANIMAL_LIST_FRAGMENT
+import com.vasilevkin.fragmentsroom.utils.TAG_DOG_DETAILS_FRAGMENT
 
 
 class MainActivity : AppCompatActivity(), AnimalListFragment.OnAnimalSelected {
@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity(), AnimalListFragment.OnAnimalSelected {
         if (savedInstanceState == null) {
             supportFragmentManager
                 .beginTransaction()
-                .add(R.id.root_layout, AnimalListFragment.newInstance(), tagAnimalListFragment)
+                .add(R.id.root_layout, AnimalListFragment.newInstance(), TAG_ANIMAL_LIST_FRAGMENT)
                 .commit()
         }
     }
@@ -32,8 +32,8 @@ class MainActivity : AppCompatActivity(), AnimalListFragment.OnAnimalSelected {
 
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.root_layout, detailsFragment, tagDogDetailsFragment)
-            .addToBackStack(tagDogDetailsFragment)
+            .replace(R.id.root_layout, detailsFragment, TAG_DOG_DETAILS_FRAGMENT)
+            .addToBackStack(TAG_DOG_DETAILS_FRAGMENT)
             .commit()
     }
 }

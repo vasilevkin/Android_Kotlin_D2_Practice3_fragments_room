@@ -9,8 +9,8 @@ import com.vasilevkin.fragmentsroom.models.localModels.LongHorizontalCatLocalMod
 import com.vasilevkin.fragmentsroom.models.localModels.SquareCatLocalModel
 import com.vasilevkin.fragmentsroom.repository.AnimalRepository
 import com.vasilevkin.fragmentsroom.repository.IAnimalRepository
-import com.vasilevkin.fragmentsroom.utils.emptyAnimalArraySize
-import com.vasilevkin.fragmentsroom.utils.numberOfUniqueItems
+import com.vasilevkin.fragmentsroom.utils.EMPTY_ANIMAL_ARRAY_SIZE
+import com.vasilevkin.fragmentsroom.utils.NUMBER_OF_UNIQUE_ITEMS
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.internal.schedulers.IoScheduler
@@ -58,7 +58,7 @@ class AnimalListViewModel : ViewModel() {
                 for (i in cats.indices) {
                     var item: IComparableItem?
 
-                    when (i % numberOfUniqueItems) {
+                    when (i % NUMBER_OF_UNIQUE_ITEMS) {
                         0 -> item = LongHorizontalCatLocalModel(
                             view,
                             Animal(
@@ -111,8 +111,8 @@ class AnimalListViewModel : ViewModel() {
     }
 
     private fun prepareData(): List<IComparableItem> {
-        val objects = ArrayList<IComparableItem>(emptyAnimalArraySize)
-        for (i in 0 until emptyAnimalArraySize) {
+        val objects = ArrayList<IComparableItem>(EMPTY_ANIMAL_ARRAY_SIZE)
+        for (i in 0 until EMPTY_ANIMAL_ARRAY_SIZE) {
             val item = SquareCatLocalModel(
                 view as Context,
                 Animal("Title$i", "Description$i", "")

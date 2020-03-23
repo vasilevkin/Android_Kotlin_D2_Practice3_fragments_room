@@ -18,7 +18,7 @@ import com.vasilevkin.fragmentsroom.features.animalList.view.adapter.BigViewpage
 import com.vasilevkin.fragmentsroom.features.animalList.view.adapter.LongHorizontalDelegateAdapter
 import com.vasilevkin.fragmentsroom.features.animalList.view.adapter.SquareDelegateAdapter
 import com.vasilevkin.fragmentsroom.models.localModels.Animal
-import com.vasilevkin.fragmentsroom.utils.numberOfItemsInRecycler
+import com.vasilevkin.fragmentsroom.utils.NUMBER_OF_ITEMS_IN_RECYCLER
 import io.reactivex.disposables.Disposable
 
 
@@ -85,7 +85,7 @@ class AnimalListFragment : Fragment() {
         val manager = GridLayoutManager(activity, 2)
         manager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
-                return when (position % numberOfItemsInRecycler) {
+                return when (position % NUMBER_OF_ITEMS_IN_RECYCLER) {
                     0 -> 2
                     1, 2 -> 1
                     else -> 2

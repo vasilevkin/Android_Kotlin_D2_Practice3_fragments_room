@@ -1,9 +1,9 @@
 package com.vasilevkin.fragmentsroom.utils
 
-const val tagAnimalListFragment = "tagAnimalListFragment"
-const val tagDogDetailsFragment = "tagDogDetailsFragment"
-const val animalDetailsModel = "animalDetailsModel"
-const val splashScreenShowDelay: Long = 0
-const val numberOfItemsInRecycler = 4
-const val numberOfUniqueItems = 6
-const val emptyAnimalArraySize = 20
+const val TAG_ANIMAL_LIST_FRAGMENT = "tagAnimalListFragment"
+const val TAG_DOG_DETAILS_FRAGMENT = "tagDogDetailsFragment"
+const val ANIMAL_DETAILS_MODEL = "animalDetailsModel"
+const val SPLASH_SCREEN_SHOW_DELAY: Long = 0
+const val NUMBER_OF_ITEMS_IN_RECYCLER = 4
+const val NUMBER_OF_UNIQUE_ITEMS = 6
+const val EMPTY_ANIMAL_ARRAY_SIZE = 20
