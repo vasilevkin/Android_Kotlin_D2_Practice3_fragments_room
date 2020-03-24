@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.vasilevkin.fragmentsroom.R
@@ -33,6 +34,8 @@ class DogDetailsFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        (activity as AppCompatActivity).supportActionBar?.title = "Dog details"
 
         viewModel = ViewModelProviders.of(this).get(DogDetailsViewModel::class.java)
         viewModel.animal = arguments?.getSerializable(ANIMAL_DETAILS_MODEL) as Animal

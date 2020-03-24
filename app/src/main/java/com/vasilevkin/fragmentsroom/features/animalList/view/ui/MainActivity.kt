@@ -1,7 +1,9 @@
 package com.vasilevkin.fragmentsroom.features.animalList.view.ui
 
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
 import com.vasilevkin.fragmentsroom.R
 import com.vasilevkin.fragmentsroom.features.dogdetails.DogDetailsFragment
 import com.vasilevkin.fragmentsroom.models.localModels.Animal
@@ -17,11 +19,33 @@ class MainActivity : AppCompatActivity(), AnimalListFragment.OnAnimalSelected {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        supportFragmentManager.addOnBackStackChangedListener {
+            val stackHeight = supportFragmentManager.backStackEntryCount
+            if (stackHeight > 0) {
+                // if we have something on the stack (doesn't include the current shown fragment)
+                supportActionBar?.setHomeButtonEnabled(true)
+                supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            } else {
+                supportActionBar?.setDisplayHomeAsUpEnabled(false)
+                supportActionBar?.setHomeButtonEnabled(false)
+            }
+        }
+
         if (savedInstanceState == null) {
             supportFragmentManager
                 .beginTransaction()
                 .add(R.id.root_layout, AnimalListFragment.newInstance(), TAG_ANIMAL_LIST_FRAGMENT)
                 .commit()
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                supportFragmentManager.popBackStack()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
