@@ -7,3 +7,4 @@ const val SPLASH_SCREEN_SHOW_DELAY: Long = 0
 const val NUMBER_OF_ITEMS_IN_RECYCLER = 4
 const val NUMBER_OF_UNIQUE_ITEMS = 6
 const val EMPTY_ANIMAL_ARRAY_SIZE = 20
+const val DATABASE_NAME = "animals-db"

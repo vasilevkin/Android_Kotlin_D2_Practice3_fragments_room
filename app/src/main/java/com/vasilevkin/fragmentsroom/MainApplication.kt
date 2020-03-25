@@ -1,15 +1,23 @@
 package com.vasilevkin.fragmentsroom
 
 import android.app.Application
+import androidx.room.Room
 import com.facebook.stetho.Stetho
 import com.vasilevkin.fragmentsroom.di.animalListModule
 import com.vasilevkin.fragmentsroom.di.splashModule
+import com.vasilevkin.fragmentsroom.models.database.AppDatabase
+import com.vasilevkin.fragmentsroom.utils.DATABASE_NAME
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
 
 class MainApplication : Application() {
+
+    companion object {
+        var database: AppDatabase? = null
+    }
+
     override fun onCreate() {
         super.onCreate()
 
@@ -39,5 +47,9 @@ class MainApplication : Application() {
 
         // Initialize Stetho with the Initializer
         Stetho.initialize(initializer)
+
+        // Room database
+        MainApplication.database =
+            Room.databaseBuilder(this, AppDatabase::class.java, DATABASE_NAME).build()
     }
 }
