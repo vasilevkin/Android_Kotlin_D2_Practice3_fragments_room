@@ -1,18 +1,57 @@
 package com.vasilevkin.fragmentsroom.repository
 
 import com.google.gson.GsonBuilder
+import com.vasilevkin.fragmentsroom.MainApplication
 import com.vasilevkin.fragmentsroom.models.localModels.Animal
+import com.vasilevkin.fragmentsroom.models.localModels.AnimalsEntity
 import com.vasilevkin.fragmentsroom.models.networkModels.Breed
+import com.vasilevkin.fragmentsroom.repository.datasource.*
+import com.vasilevkin.fragmentsroom.utils.getCurrentTime
 import com.vasilevkin.fragmentsroom.utils.getDataServiceCommon
 import com.vasilevkin.fragmentsroom.utils.getDogDataServiceCommon
 import io.reactivex.Single
 import org.json.JSONArray
 import org.json.JSONObject
+import java.util.concurrent.TimeUnit
 
 
-class AnimalRepository : IAnimalRepository {
+class AnimalRepository(
+//    private val localDataSource: ILocalDataSource,
+//    private val cloudDataSource: ICloudDataSource
+) : IAnimalRepository {
+
+    private val animalsDao = MainApplication.database?.animalsDao()
+    private val localDataSource: ILocalDataSource = LocalDataSource(animalsDao!!)
+    private val cloudDataSource: ICloudDataSource = CloudDataSource()
 
     private var breedList = mutableListOf<Breed>()
+
+    private val millisPerDay = TimeUnit.DAYS.toMillis(1)
+
+    private fun isCacheValid(time: Long): Boolean {
+        return (getCurrentTime() - time) < millisPerDay
+    }
+
+    private fun parseToAnimalsEntity(animals: List<Animal>): AnimalsEntity {
+        return AnimalsEntity(animals = animals.map { it }, time = getCurrentTime())
+    }
+
+    override fun getAnimals(): Single<List<Animal>> {
+        return localDataSource.getAnimals().flatMap { animalsEntity ->
+            if (isCacheValid(animalsEntity.time)) Single.just(animalsEntity.animals.map { it })
+            else throw CacheIsNotValidException()
+        }.onErrorResumeNext {
+            //            cloudDataSource.getPhotos().map {
+            getAllAnimals().map {
+                it.map {
+                    it
+                }.also {
+                    localDataSource.saveAnimals(parseToAnimalsEntity(it))
+                }
+            }
+        }
+    }
+
 
     override fun getAllAnimals(): Single<List<Animal>> {
 
@@ -38,7 +77,7 @@ class AnimalRepository : IAnimalRepository {
 //                return@map arr
 //            }
             .map { dogsFromNetwork ->
-                return@map getBreedObjList( dogsFromNetwork.breedsList!!)
+                return@map getBreedObjList(dogsFromNetwork.breedsList!!)
             }
             .map { breedList ->
                 breedList.map {
