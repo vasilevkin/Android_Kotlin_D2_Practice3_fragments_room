@@ -6,13 +6,13 @@ import com.vasilevkin.fragmentsroom.models.localModels.Animal
 import com.vasilevkin.fragmentsroom.models.localModels.AnimalsEntity
 import com.vasilevkin.fragmentsroom.models.networkModels.Breed
 import com.vasilevkin.fragmentsroom.repository.datasource.*
+import com.vasilevkin.fragmentsroom.utils.CACHE_VALID_TIME_IN_MILLIS
 import com.vasilevkin.fragmentsroom.utils.getCurrentTime
 import com.vasilevkin.fragmentsroom.utils.getDataServiceCommon
 import com.vasilevkin.fragmentsroom.utils.getDogDataServiceCommon
 import io.reactivex.Single
 import org.json.JSONArray
 import org.json.JSONObject
-import java.util.concurrent.TimeUnit
 
 
 class AnimalRepository(
@@ -26,10 +26,8 @@ class AnimalRepository(
 
     private var breedList = mutableListOf<Breed>()
 
-    private val millisPerDay = TimeUnit.DAYS.toMillis(1)
-
     private fun isCacheValid(time: Long): Boolean {
-        return (getCurrentTime() - time) < millisPerDay
+        return (getCurrentTime() - time) < CACHE_VALID_TIME_IN_MILLIS
     }
 
     private fun parseToAnimalsEntity(animals: List<Animal>): AnimalsEntity {
@@ -64,30 +62,25 @@ class AnimalRepository(
 
 
         return dogResponse
-
-//            .map { list ->
-//                Log.d("z5c", "${list.breedsList} ${list.status}" )
-//                val arr = ArrayList<CatImageRemoteModel>(5)
-//                for (cat in list.indices) {
-//                    catsApi.getImageForBreedId(1, list[cat].breedId.orEmpty())
-//                        .subscribe { singleCatlist ->
-//                            arr.add(singleCatlist.first())
-//                        }
-//                }
-//                return@map arr
-//            }
             .map { dogsFromNetwork ->
                 return@map getBreedObjList(dogsFromNetwork.breedsList!!)
             }
-            .map { breedList ->
-                breedList.map {
-                    Animal(
-                        it.breed,
-                        it.breed
-                    )
+            .map { list ->
+                val arr = ArrayList<Animal>(5)
+                for (dog in list.indices) {
+                    dogsApi.getRandomImageForBreed(list[dog].breed)
+                        .subscribe { singleDog ->
+                            arr.add(
+                                Animal(
+                                    list[dog].breed.capitalize(),
+                                    list[dog].breed,
+                                    singleDog.imageUrl.orEmpty()
+                                )
+                            )
+                        }
                 }
+                return@map arr
             }
-
     }
 
 

@@ -16,3 +16,9 @@ data class DogRemoteModel(
 //    @SerializedName("origin") val origin: String? = null,
     @SerializedName("id") val breedId: String? = null
 )
+
+
+data class DogImageRemoteModel(
+    @SerializedName("message") val imageUrl: String? = null,
+    @SerializedName("status") val status: String? = null
+)
