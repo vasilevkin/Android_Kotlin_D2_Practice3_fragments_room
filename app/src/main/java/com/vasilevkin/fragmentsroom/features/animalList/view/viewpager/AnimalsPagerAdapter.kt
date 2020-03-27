@@ -33,7 +33,7 @@ class AnimalsPagerAdapter(
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val itemView: View = layoutInflater.inflate(R.layout.fragment_animal, container, false)
 
-        itemView.fragment_title_text_view.text = animals[position].title
+        itemView.fragment_title_text_view.text = animals[position].title.orEmpty().capitalize()
         itemView.fragment_subtitle_text_view.text = animals[position].subtitle
 
         if (animals[position].imageUrl != null) {

@@ -14,7 +14,7 @@ class LongHorizontalDelegateAdapter : KDelegateAdapter<LongHorizontalCatLocalMod
 
     override fun onBind(item: LongHorizontalCatLocalModel, viewHolder: KViewHolder) =
         with(viewHolder) {
-            title_text_view.text = item.animal.title
+            title_text_view.text = item.animal.title.orEmpty().capitalize()
             subtitle_text_view.text = item.animal.subtitle
             downloadImageInView(item.context, itemView.details_image, item.animal.imageUrl.orEmpty())
             itemView.setOnClickListener {

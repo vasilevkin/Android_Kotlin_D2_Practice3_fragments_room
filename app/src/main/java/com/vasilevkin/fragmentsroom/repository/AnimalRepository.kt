@@ -92,7 +92,7 @@ class AnimalRepository(
                         .subscribe { singleDog ->
                             arr.add(
                                 Animal(
-                                    list[dog].breed.capitalize(),
+                                    list[dog].breed,
                                     list[dog].breed,
                                     singleDog.imageUrl.orEmpty()
                                 )

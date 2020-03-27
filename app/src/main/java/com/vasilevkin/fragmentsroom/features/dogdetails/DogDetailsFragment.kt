@@ -55,7 +55,7 @@ class DogDetailsFragment : Fragment() {
 
         viewModel.view = activity as Context
 
-        (activity as AppCompatActivity).supportActionBar?.title = viewModel.animal?.title.orEmpty()
+        (activity as AppCompatActivity).supportActionBar?.title = viewModel.animal?.title.orEmpty().capitalize()
     }
 
     override fun onStart() {
