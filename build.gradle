@@ -33,6 +33,9 @@ buildscript {
 
         // Koin for Android
         koin_version = '2.1.0'
+
+        // ImageView with zoom
+        photoview_version = '2.3.0'
     }
     repositories {
         google()
@@ -51,7 +54,7 @@ allprojects {
     repositories {
         google()
         jcenter()
-
+        maven { url "https://jitpack.io" }
     }
 }
 
