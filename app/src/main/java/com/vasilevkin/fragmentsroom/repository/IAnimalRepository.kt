@@ -8,4 +8,7 @@ interface IAnimalRepository {
     fun getAllAnimals(): Single<List<Animal>>
 
     fun getAnimals(): Single<List<Animal>>
+
+    fun getDogImagesFor(breed: String): Single<List<Animal>>
+
 }

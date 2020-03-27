@@ -1,7 +1,6 @@
 package com.vasilevkin.fragmentsroom.models.networkModels
 
 import com.google.gson.annotations.SerializedName
-import java.io.Serializable
 
 
 data class DogBreedsListRemoteModel(
@@ -20,5 +19,11 @@ data class DogRemoteModel(
 
 data class DogImageRemoteModel(
     @SerializedName("message") val imageUrl: String? = null,
+    @SerializedName("status") val status: String? = null
+)
+
+
+data class DogAllImagesListRemoteModel(
+    @SerializedName("message") val images: List<String>? = null,
     @SerializedName("status") val status: String? = null
 )

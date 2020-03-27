@@ -1,5 +1,6 @@
 package com.vasilevkin.fragmentsroom.network
 
+import com.vasilevkin.fragmentsroom.models.networkModels.DogAllImagesListRemoteModel
 import com.vasilevkin.fragmentsroom.models.networkModels.DogBreedsListRemoteModel
 import com.vasilevkin.fragmentsroom.models.networkModels.DogImageRemoteModel
 import io.reactivex.Single
@@ -17,6 +18,9 @@ interface DogInterface {
     @GET("breed/{breed}/images/random")
     fun getRandomImageForBreed(@Path("breed") breed: String?): Single<DogImageRemoteModel>
     
+    @GET("breed/{breed}/images")
+    fun getAllImagesForBreed(@Path("breed") breed: String?): Single<DogAllImagesListRemoteModel>
+
 
 //    @GET("v1/images/search?limit=30&breed_id=abys")
 //    fun getBreedWithImages(): Single<List<CatImageRemoteModel>>

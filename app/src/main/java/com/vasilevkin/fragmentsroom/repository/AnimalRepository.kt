@@ -50,6 +50,26 @@ class AnimalRepository(
         }
     }
 
+    override fun getDogImagesFor(breed: String): Single<List<Animal>> {
+
+        val dogsApi = getDogDataServiceCommon()
+        val dogResponse = dogsApi.getAllImagesForBreed(breed)
+
+        return dogResponse
+            .map {
+                it.images
+            }
+            .map { list ->
+                val arr = ArrayList<Animal>(5)
+                for (dog in list.indices) {
+                    arr.add(
+                        Animal(imageUrl = list[dog])
+                    )
+                }
+                return@map arr
+            }
+    }
+
 
     override fun getAllAnimals(): Single<List<Animal>> {
 
