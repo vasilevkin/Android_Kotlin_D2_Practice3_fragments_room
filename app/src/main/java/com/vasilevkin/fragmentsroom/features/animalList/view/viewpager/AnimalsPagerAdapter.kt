@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
 import com.vasilevkin.fragmentsroom.R
-import com.vasilevkin.fragmentsroom.features.animalList.IMainContract
+import com.vasilevkin.fragmentsroom.features.animalList.view.ui.AnimalListFragment
 import com.vasilevkin.fragmentsroom.models.localModels.Animal
 import com.vasilevkin.fragmentsroom.utils.downloadImageInView
 import kotlinx.android.synthetic.main.fragment_animal.view.*
@@ -39,8 +39,13 @@ class AnimalsPagerAdapter(
         if (animals[position].imageUrl != null) {
             downloadImageInView(
                 context, itemView.fragment_details_image,
-                animals[position].imageUrl.toString()
+                animals[position].imageUrl.orEmpty()
             )
+        }
+
+        itemView.setOnClickListener {
+            val act = context as AnimalListFragment.OnAnimalSelected
+            act.onSelected(animals[position])
         }
 
         container.addView(itemView)
