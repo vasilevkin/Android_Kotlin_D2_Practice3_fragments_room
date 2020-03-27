@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit
 
 const val TAG_ANIMAL_LIST_FRAGMENT = "tagAnimalListFragment"
 const val TAG_DOG_DETAILS_FRAGMENT = "tagDogDetailsFragment"
+const val TAG_PHOTO_ZOOM_FRAGMENT = "tagPhotoZoomFragment"
 const val ANIMAL_DETAILS_MODEL = "animalDetailsModel"
 const val SPLASH_SCREEN_SHOW_DELAY: Long = 0
 const val NUMBER_OF_ITEMS_IN_RECYCLER = 4

@@ -3,15 +3,17 @@ package com.vasilevkin.fragmentsroom.features.animalList.view.ui
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentManager
 import com.vasilevkin.fragmentsroom.R
 import com.vasilevkin.fragmentsroom.features.dogdetails.DogDetailsFragment
+import com.vasilevkin.fragmentsroom.features.photozoom.PhotoZoomFragment
 import com.vasilevkin.fragmentsroom.models.localModels.Animal
 import com.vasilevkin.fragmentsroom.utils.TAG_ANIMAL_LIST_FRAGMENT
 import com.vasilevkin.fragmentsroom.utils.TAG_DOG_DETAILS_FRAGMENT
+import com.vasilevkin.fragmentsroom.utils.TAG_PHOTO_ZOOM_FRAGMENT
 
 
-class MainActivity : AppCompatActivity(), AnimalListFragment.OnAnimalSelected {
+class MainActivity : AppCompatActivity(), AnimalListFragment.OnAnimalSelected,
+    DogDetailsFragment.OnPhotoSelected {
 
     // Lifecycle methods
 
@@ -58,6 +60,18 @@ class MainActivity : AppCompatActivity(), AnimalListFragment.OnAnimalSelected {
             .beginTransaction()
             .replace(R.id.root_layout, detailsFragment, TAG_DOG_DETAILS_FRAGMENT)
             .addToBackStack(TAG_DOG_DETAILS_FRAGMENT)
+            .commit()
+    }
+
+    // interface AnimalListFragment.OnPhotoSelected
+
+    override fun onSelectedPhoto(animalPhoto: Animal) {
+        val photoZoomFragment = PhotoZoomFragment.newInstance(animalPhoto)
+
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.root_layout, photoZoomFragment, TAG_PHOTO_ZOOM_FRAGMENT)
+            .addToBackStack(TAG_PHOTO_ZOOM_FRAGMENT)
             .commit()
     }
 }

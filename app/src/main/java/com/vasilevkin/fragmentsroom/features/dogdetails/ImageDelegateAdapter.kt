@@ -17,9 +17,8 @@ class ImageDelegateAdapter : KDelegateAdapter<ImageLocalModel>() {
                 item.animal.imageUrl.orEmpty()
             )
             itemView.setOnClickListener {
-
-                //                val act = item.context as AnimalListFragment.OnAnimalSelected
-//                act.onSelected(Animal(item.animal.title))
+                val activity = item.context as DogDetailsFragment.OnPhotoSelected
+                activity.onSelectedPhoto(item.animal)
             }
         }
 

@@ -30,6 +30,10 @@ class DogDetailsFragment : Fragment() {
         }
     }
 
+    interface OnPhotoSelected {
+        fun onSelectedPhoto(animalPhoto: Animal)
+    }
+
     private lateinit var viewModel: DogDetailsViewModel
 
     private var dogImages: List<IComparableItem> = emptyList()
@@ -37,7 +41,21 @@ class DogDetailsFragment : Fragment() {
     private var imagesRecyclerView: RecyclerView? = null
     private var disposable: Disposable? = null
 
+    private lateinit var listener: DogDetailsFragment.OnPhotoSelected
+
     // Fragment Lifecycle methods
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        if (context is DogDetailsFragment.OnPhotoSelected) {
+            listener = context
+        } else {
+            throw ClassCastException(
+                "$context must implement OnPhotoSelected."
+            )
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
