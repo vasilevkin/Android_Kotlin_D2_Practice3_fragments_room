@@ -36,6 +36,10 @@ buildscript {
 
         // ImageView with zoom
         photoview_version = '2.3.0'
+
+        // Dagger 2
+        dagger_version = '2.26'
+        dagger_javax_annotation_version = '1.0'
     }
     repositories {
         google()
