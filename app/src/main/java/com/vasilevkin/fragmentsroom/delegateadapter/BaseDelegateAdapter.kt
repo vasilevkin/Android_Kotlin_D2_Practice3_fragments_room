@@ -26,12 +26,12 @@ abstract class BaseDelegateAdapter<VH : BaseViewHolder?, T> : IDelegateAdapter<R
         val inflatedView = LayoutInflater.from(parent.context)
             .inflate(layoutId, parent, false)
         val holder = createViewHolder(inflatedView)
-        holder!!.setListener ( object : BaseViewHolder.ItemInflateListener {
+        holder?.setListener ( object : BaseViewHolder.ItemInflateListener {
             override fun inflated(viewType: Any?, view: View?) {
                 onBindViewHolder(view ?: return, viewType as T, holder)
             }
         })
-        return holder
+        return holder as RecyclerView.ViewHolder
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, items: List<IComparableItem>, position: Int) {

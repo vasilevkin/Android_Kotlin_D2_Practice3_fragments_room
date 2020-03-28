@@ -83,7 +83,7 @@ class AnimalRepository(
 
         return dogResponse
             .map { dogsFromNetwork ->
-                return@map getBreedObjList(dogsFromNetwork.breedsList!!)
+                return@map dogsFromNetwork.breedsList?.let { getBreedObjList(it) }
             }
             .map { list ->
                 val arr = ArrayList<Animal>(5)
