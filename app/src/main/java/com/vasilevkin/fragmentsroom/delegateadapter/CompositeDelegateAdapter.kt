@@ -3,7 +3,6 @@ package com.vasilevkin.fragmentsroom.delegateadapter
 import android.util.SparseArray
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import java.util.*
 
 
 open class CompositeDelegateAdapter<T> constructor(private val typeToAdapterMap: SparseArray<IDelegateAdapter<RecyclerView.ViewHolder, T>>) :

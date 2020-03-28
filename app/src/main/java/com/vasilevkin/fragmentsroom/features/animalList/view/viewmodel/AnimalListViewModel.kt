@@ -3,22 +3,18 @@ package com.vasilevkin.fragmentsroom.features.animalList.view.viewmodel
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import com.vasilevkin.fragmentsroom.delegateadapter.diff.IComparableItem
-import com.vasilevkin.fragmentsroom.models.database.dao.AnimalsDao
 import com.vasilevkin.fragmentsroom.models.localModels.Animal
 import com.vasilevkin.fragmentsroom.models.localModels.BigViewpagerLocalModel
 import com.vasilevkin.fragmentsroom.models.localModels.LongHorizontalCatLocalModel
 import com.vasilevkin.fragmentsroom.models.localModels.SquareCatLocalModel
 import com.vasilevkin.fragmentsroom.repository.AnimalRepository
 import com.vasilevkin.fragmentsroom.repository.IAnimalRepository
-import com.vasilevkin.fragmentsroom.repository.datasource.LocalDataSource
 import com.vasilevkin.fragmentsroom.utils.EMPTY_ANIMAL_ARRAY_SIZE
 import com.vasilevkin.fragmentsroom.utils.NUMBER_OF_UNIQUE_ITEMS
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.internal.schedulers.IoScheduler
 import io.reactivex.subjects.BehaviorSubject
-import org.koin.android.ext.android.inject
-import org.koin.java.KoinJavaComponent.inject
 
 
 class AnimalListViewModel : ViewModel() {
@@ -123,7 +119,7 @@ class AnimalListViewModel : ViewModel() {
         val objects = ArrayList<IComparableItem>(EMPTY_ANIMAL_ARRAY_SIZE)
         for (i in 0 until EMPTY_ANIMAL_ARRAY_SIZE) {
             val item = SquareCatLocalModel(
-                view as Context,
+                view,
                 Animal("Title$i", "Description$i", "")
             )
             objects.add(item)

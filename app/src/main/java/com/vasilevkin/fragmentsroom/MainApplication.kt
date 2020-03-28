@@ -49,7 +49,7 @@ class MainApplication : Application() {
         Stetho.initialize(initializer)
 
         // Room database
-        MainApplication.database =
+        database =
             Room.databaseBuilder(this, AppDatabase::class.java, DATABASE_NAME).build()
     }
 }

@@ -23,7 +23,7 @@ class AnimalsPagerAdapter(
     PagerAdapter() {
 
     private val tag = "AnimalsPagerAdapter"
-    private var layoutInflater = LayoutInflater.from(context as Context)
+    private var layoutInflater = LayoutInflater.from(context)
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
         return (view == `object`)

@@ -72,7 +72,7 @@ class AnimalListFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        catList = view?.findViewById<RecyclerView>(R.id.cat_list_recyclerview)
+        catList = view?.findViewById(R.id.cat_list_recyclerview)
 
         viewModel.onViewCreated()
 

@@ -76,7 +76,7 @@ class DogDetailsViewModel : ViewModel() {
         val objects = ArrayList<IComparableItem>(EMPTY_ANIMAL_ARRAY_SIZE)
         for (i in 0 until EMPTY_ANIMAL_ARRAY_SIZE) {
             val item = ImageLocalModel(
-                view as Context,
+                view,
                 Animal(
                     "Title$i",
                     "Description$i",

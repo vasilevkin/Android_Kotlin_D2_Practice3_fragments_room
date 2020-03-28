@@ -48,7 +48,7 @@ class PhotoZoomFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        photoZoomImageView = view?.findViewById<ImageView>(R.id.photo_zoom_imageview)
+        photoZoomImageView = view?.findViewById(R.id.photo_zoom_imageview)
 
         val imageUrl = viewModel.animal?.imageUrl.orEmpty()
         photoZoomImageView?.let {

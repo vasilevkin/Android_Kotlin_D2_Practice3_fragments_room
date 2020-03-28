@@ -43,14 +43,14 @@ class DogDetailsFragment : Fragment() {
     private var imagesRecyclerView: RecyclerView? = null
     private var disposable: Disposable? = null
 
-    private lateinit var listener: DogDetailsFragment.OnPhotoSelected
+    private lateinit var listener: OnPhotoSelected
 
     // Fragment Lifecycle methods
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
-        if (context is DogDetailsFragment.OnPhotoSelected) {
+        if (context is OnPhotoSelected) {
             listener = context
         } else {
             throw ClassCastException(
@@ -81,7 +81,7 @@ class DogDetailsFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        imagesRecyclerView = view?.findViewById<RecyclerView>(R.id.dog_details_images_recyclerview)
+        imagesRecyclerView = view?.findViewById(R.id.dog_details_images_recyclerview)
 
         viewModel.onViewCreated()
 

@@ -40,8 +40,8 @@ class AnimalRepository(
             else throw CacheIsNotValidException()
         }.onErrorResumeNext {
             //            cloudDataSource.getPhotos().map {
-            getAllAnimals().map {
-                it.map {
+            getAllAnimals().map { animalList ->
+                animalList.map {
                     it
                 }.also {
                     localDataSource.saveAnimals(parseToAnimalsEntity(it))
@@ -105,18 +105,18 @@ class AnimalRepository(
 
 
     private fun getBreedObjList(obj: Any): List<Breed> {
-        var list = mutableListOf<Breed>()
+        val list = mutableListOf<Breed>()
         val gson1 = GsonBuilder().setPrettyPrinting().create()
         val jsonStr: String = gson1.toJson(obj)
         val jsonObj = JSONObject(jsonStr)
-        var keys = jsonObj.keys()
+        val keys = jsonObj.keys()
 
         while (keys.hasNext()) {
-            var key = keys.next()
-            var value: Any = jsonObj.get((key))
+            val key = keys.next()
+            val value: Any = jsonObj.get((key))
             val subBreeds = value.toString()
 
-            var subBreedList = mutableListOf<String>()
+            val subBreedList = mutableListOf<String>()
 
             if (subBreeds.isNotBlank()) {
                 val jsonarray = JSONArray(subBreeds)
@@ -126,7 +126,7 @@ class AnimalRepository(
                 }
             }
 
-            var objBreed = object : Breed(key, subBreedList) {}
+            val objBreed = object : Breed(key, subBreedList) {}
             list.add(objBreed)
         }
 
