@@ -17,7 +17,9 @@ import com.vasilevkin.fragmentsroom.delegateadapter.diff.IComparableItem
 import com.vasilevkin.fragmentsroom.models.localModels.Animal
 import com.vasilevkin.fragmentsroom.utils.ANIMAL_DETAILS_MODEL
 import io.reactivex.disposables.Disposable
+import java.util.*
 
+@ExperimentalStdlibApi
 class DogDetailsFragment : Fragment() {
 
     companion object {
@@ -73,7 +75,8 @@ class DogDetailsFragment : Fragment() {
 
         viewModel.view = activity as Context
 
-        (activity as AppCompatActivity).supportActionBar?.title = viewModel.animal?.title.orEmpty().capitalize()
+        (activity as AppCompatActivity).supportActionBar?.title = viewModel.animal?.title.orEmpty()
+            .capitalize(Locale.getDefault())
     }
 
     override fun onStart() {

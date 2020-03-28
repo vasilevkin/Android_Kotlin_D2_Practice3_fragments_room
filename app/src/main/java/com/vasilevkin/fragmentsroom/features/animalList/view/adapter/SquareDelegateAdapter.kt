@@ -8,13 +8,15 @@ import com.vasilevkin.fragmentsroom.models.localModels.SquareCatLocalModel
 import com.vasilevkin.fragmentsroom.utils.downloadImageInView
 import kotlinx.android.synthetic.main.square_item.*
 import kotlinx.android.synthetic.main.square_item.view.*
+import java.util.*
 
 
+@ExperimentalStdlibApi
 class SquareDelegateAdapter : KDelegateAdapter<SquareCatLocalModel>() {
 
     override fun onBind(item: SquareCatLocalModel, viewHolder: KViewHolder) =
         with(viewHolder) {
-            title_text_view.text = item.animal.title.orEmpty().capitalize()
+            title_text_view.text = item.animal.title.orEmpty().capitalize(Locale.getDefault())
             subtitle_text_view.text = item.animal.subtitle
             downloadImageInView(item.context, itemView.details_image, item.animal.imageUrl.orEmpty())
             itemView.setOnClickListener {

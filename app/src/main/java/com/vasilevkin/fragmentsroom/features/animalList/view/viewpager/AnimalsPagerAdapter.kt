@@ -11,8 +11,11 @@ import com.vasilevkin.fragmentsroom.features.animalList.view.ui.AnimalListFragme
 import com.vasilevkin.fragmentsroom.models.localModels.Animal
 import com.vasilevkin.fragmentsroom.utils.downloadImageInView
 import kotlinx.android.synthetic.main.fragment_animal.view.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 
+@ExperimentalStdlibApi
 class AnimalsPagerAdapter(
     private val context: Context,
     private val animals: ArrayList<Animal>
@@ -33,7 +36,8 @@ class AnimalsPagerAdapter(
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val itemView: View = layoutInflater.inflate(R.layout.fragment_animal, container, false)
 
-        itemView.fragment_title_text_view.text = animals[position].title.orEmpty().capitalize()
+        itemView.fragment_title_text_view.text =
+            animals[position].title.orEmpty().capitalize(Locale.getDefault())
         itemView.fragment_subtitle_text_view.text = animals[position].subtitle
 
         if (animals[position].imageUrl != null) {

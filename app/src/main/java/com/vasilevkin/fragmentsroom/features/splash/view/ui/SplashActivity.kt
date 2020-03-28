@@ -21,6 +21,7 @@ import java.util.concurrent.TimeUnit
  * opens up in fullscreen mode. Once launched it waits for 2 seconds after which it opens the
  * MainActivity
  */
+@ExperimentalStdlibApi
 class SplashActivity : BaseActivity<ISplashContract.Presenter>(), ISplashContract.View {
 
     override val presenter: ISplashContract.Presenter by inject { parametersOf(this) }

@@ -7,6 +7,7 @@ import com.vasilevkin.fragmentsroom.utils.downloadImageInView
 import kotlinx.android.synthetic.main.dog_details_image_item.view.*
 
 
+@ExperimentalStdlibApi
 class ImageDelegateAdapter : KDelegateAdapter<ImageLocalModel>() {
 
     override fun onBind(item: ImageLocalModel, viewHolder: KViewHolder) =

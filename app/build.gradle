@@ -78,5 +78,5 @@ dependencies {
     // Dagger 2
     implementation "com.google.dagger:dagger:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
-    provided "javax.annotation:jsr250-api:$dagger_javax_annotation_version"
+    compileOnly "javax.annotation:jsr250-api:$dagger_javax_annotation_version"
 }

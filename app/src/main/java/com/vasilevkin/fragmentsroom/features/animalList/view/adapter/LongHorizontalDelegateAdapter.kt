@@ -8,13 +8,15 @@ import com.vasilevkin.fragmentsroom.models.localModels.LongHorizontalCatLocalMod
 import com.vasilevkin.fragmentsroom.utils.downloadImageInView
 import kotlinx.android.synthetic.main.long_horizontal_item.*
 import kotlinx.android.synthetic.main.long_horizontal_item.view.*
+import java.util.*
 
 
+@ExperimentalStdlibApi
 class LongHorizontalDelegateAdapter : KDelegateAdapter<LongHorizontalCatLocalModel>() {
 
     override fun onBind(item: LongHorizontalCatLocalModel, viewHolder: KViewHolder) =
         with(viewHolder) {
-            title_text_view.text = item.animal.title.orEmpty().capitalize()
+            title_text_view.text = item.animal.title.orEmpty().capitalize(Locale.getDefault())
             subtitle_text_view.text = item.animal.subtitle
             downloadImageInView(item.context, itemView.details_image, item.animal.imageUrl.orEmpty())
             itemView.setOnClickListener {

@@ -7,6 +7,7 @@ import com.vasilevkin.fragmentsroom.models.localModels.BigViewpagerLocalModel
 import kotlinx.android.synthetic.main.big_viewpager_item.*
 
 
+@ExperimentalStdlibApi
 class BigViewpagerDelegateAdapter : KDelegateAdapter<BigViewpagerLocalModel>() {
 
     private lateinit var pagerAdapter: AnimalsPagerAdapter

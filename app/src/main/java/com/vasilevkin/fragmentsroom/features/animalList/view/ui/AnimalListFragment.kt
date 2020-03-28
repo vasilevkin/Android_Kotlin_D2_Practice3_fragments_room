@@ -23,6 +23,7 @@ import com.vasilevkin.fragmentsroom.utils.NUMBER_OF_ITEMS_IN_RECYCLER
 import io.reactivex.disposables.Disposable
 
 
+@ExperimentalStdlibApi
 class AnimalListFragment : Fragment() {
 
     companion object {

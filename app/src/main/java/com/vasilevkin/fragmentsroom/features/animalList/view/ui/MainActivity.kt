@@ -12,6 +12,7 @@ import com.vasilevkin.fragmentsroom.utils.TAG_DOG_DETAILS_FRAGMENT
 import com.vasilevkin.fragmentsroom.utils.TAG_PHOTO_ZOOM_FRAGMENT
 
 
+@ExperimentalStdlibApi
 class MainActivity : AppCompatActivity(), AnimalListFragment.OnAnimalSelected,
     DogDetailsFragment.OnPhotoSelected {
 
