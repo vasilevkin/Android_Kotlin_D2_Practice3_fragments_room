@@ -15,9 +15,10 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.internal.schedulers.IoScheduler
 import io.reactivex.subjects.BehaviorSubject
+import javax.inject.Inject
 
 
-class AnimalListViewModel : ViewModel() {
+class AnimalListViewModel @Inject constructor() : ViewModel() {
 
      var animalRepository: IAnimalRepository = AnimalRepository(
 //         LocalDataSource(AnimalsDao()), CloudDataSource()

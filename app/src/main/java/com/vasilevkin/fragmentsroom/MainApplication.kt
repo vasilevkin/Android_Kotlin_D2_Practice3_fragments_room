@@ -3,6 +3,8 @@ package com.vasilevkin.fragmentsroom
 import android.app.Application
 import androidx.room.Room
 import com.facebook.stetho.Stetho
+import com.vasilevkin.fragmentsroom.di.AppComponent
+import com.vasilevkin.fragmentsroom.di.DaggerAppComponent
 import com.vasilevkin.fragmentsroom.di.animalListModule
 import com.vasilevkin.fragmentsroom.di.splashModule
 import com.vasilevkin.fragmentsroom.models.database.AppDatabase
@@ -16,6 +18,14 @@ class MainApplication : Application() {
 
     companion object {
         var database: AppDatabase? = null
+    }
+
+    val appComponent: AppComponent by lazy {
+        initializeComponent()
+    }
+
+    open fun initializeComponent(): AppComponent {
+        return DaggerAppComponent.factory().create(applicationContext)
     }
 
     override fun onCreate() {

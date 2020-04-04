@@ -3,7 +3,9 @@ package com.vasilevkin.fragmentsroom.features.animalList.view.ui
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import com.vasilevkin.fragmentsroom.MainApplication
 import com.vasilevkin.fragmentsroom.R
+import com.vasilevkin.fragmentsroom.di.AppComponent
 import com.vasilevkin.fragmentsroom.features.dogdetails.DogDetailsFragment
 import com.vasilevkin.fragmentsroom.features.photozoom.PhotoZoomFragment
 import com.vasilevkin.fragmentsroom.models.localModels.Animal
@@ -16,9 +18,14 @@ import com.vasilevkin.fragmentsroom.utils.TAG_PHOTO_ZOOM_FRAGMENT
 class MainActivity : AppCompatActivity(), AnimalListFragment.OnAnimalSelected,
     DogDetailsFragment.OnPhotoSelected {
 
+    lateinit var appComponent: AppComponent
+
     // Lifecycle methods
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        appComponent = (application as MainApplication).appComponent
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 

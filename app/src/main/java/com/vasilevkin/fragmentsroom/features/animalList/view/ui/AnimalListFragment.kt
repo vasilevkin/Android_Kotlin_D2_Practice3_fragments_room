@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.vasilevkin.fragmentsroom.MainApplication
 import com.vasilevkin.fragmentsroom.R
 import com.vasilevkin.fragmentsroom.delegateadapter.diff.DiffUtilCompositeAdapter
 import com.vasilevkin.fragmentsroom.delegateadapter.diff.IComparableItem
@@ -21,6 +22,7 @@ import com.vasilevkin.fragmentsroom.features.animalList.view.adapter.SquareDeleg
 import com.vasilevkin.fragmentsroom.models.localModels.Animal
 import com.vasilevkin.fragmentsroom.utils.NUMBER_OF_ITEMS_IN_RECYCLER
 import io.reactivex.disposables.Disposable
+import javax.inject.Inject
 
 
 @ExperimentalStdlibApi
@@ -35,7 +37,8 @@ class AnimalListFragment : Fragment() {
         fun onSelected(animal: Animal)
     }
 
-    private lateinit var viewModel: AnimalListViewModel
+    @Inject lateinit var viewModel: AnimalListViewModel
+
     private var cats: List<IComparableItem> = emptyList()
     private lateinit var diffAdapter: DiffUtilCompositeAdapter
     private var catList: RecyclerView? = null
@@ -47,6 +50,8 @@ class AnimalListFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+
+        (requireActivity() as MainActivity).appComponent.inject(this)
 
         if (context is OnAnimalSelected) {
             listener = context
