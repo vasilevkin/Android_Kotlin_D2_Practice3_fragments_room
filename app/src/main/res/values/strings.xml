@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Fragments Room</string>
+    <string name="content_description">Animal image</string>
+    <string name="placeholder_item_title">Title </string>
+    <string name="placeholder_item_subtitle">Description </string>
+    <string name="placeholder_item_imageurl">1</string>
 </resources>
