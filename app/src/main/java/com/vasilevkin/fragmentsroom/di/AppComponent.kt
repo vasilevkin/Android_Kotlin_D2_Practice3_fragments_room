@@ -3,6 +3,7 @@ package com.vasilevkin.fragmentsroom.di
 import android.content.Context
 import com.vasilevkin.fragmentsroom.features.animalList.view.ui.AnimalListFragment
 import com.vasilevkin.fragmentsroom.features.dogdetails.DogDetailsFragment
+import com.vasilevkin.fragmentsroom.features.photozoom.PhotoZoomFragment
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -22,4 +23,5 @@ interface AppComponent {
 
     fun inject(fragment: AnimalListFragment)
     fun inject(fragment: DogDetailsFragment)
+    fun inject(fragment: PhotoZoomFragment)
 }
