@@ -17,14 +17,10 @@ import javax.inject.Inject
 
 
 class AnimalRepository @Inject constructor(
-//    private val localDataSource: ILocalDataSource,
-//    private val cloudDataSource: ICloudDataSource
+    private val localDataSource: ILocalDataSource,
+    private val cloudDataSource: ICloudDataSource
 ) : IAnimalRepository {
-
-    private val animalsDao = MainApplication.database?.animalsDao()
-    private val localDataSource: ILocalDataSource = LocalDataSource(animalsDao!!)
-    private val cloudDataSource: ICloudDataSource = CloudDataSource()
-
+    
     private var breedList = mutableListOf<Breed>()
 
     private fun isCacheValid(time: Long): Boolean {

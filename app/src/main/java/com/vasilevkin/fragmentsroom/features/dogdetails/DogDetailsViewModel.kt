@@ -17,13 +17,10 @@ import javax.inject.Singleton
 
 
 @Singleton
-class DogDetailsViewModel @Inject constructor() : ViewModel() {
+class DogDetailsViewModel @Inject constructor(private val animalRepository: IAnimalRepository) : ViewModel() {
 
     var animal: Animal? = null
 
-    var animalRepository: IAnimalRepository = AnimalRepository(
-//         LocalDataSource(AnimalsDao()), CloudDataSource()
-    )
     private var disposable: Disposable? = null
 
     var animalsImagesList: BehaviorSubject<List<IComparableItem>> = BehaviorSubject.create()
