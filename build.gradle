@@ -31,9 +31,6 @@ buildscript {
         // For debugging
         stetho_version = '1.5.1'
 
-        // Koin for Android
-        koin_version = '2.1.0'
-
         // ImageView with zoom
         photoview_version = '2.3.0'
 

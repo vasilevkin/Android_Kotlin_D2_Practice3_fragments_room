@@ -5,15 +5,11 @@ import androidx.room.Room
 import com.facebook.stetho.Stetho
 import com.vasilevkin.fragmentsroom.di.AppComponent
 import com.vasilevkin.fragmentsroom.di.DaggerAppComponent
-import com.vasilevkin.fragmentsroom.di.animalListModule
-import com.vasilevkin.fragmentsroom.di.splashModule
 import com.vasilevkin.fragmentsroom.models.database.AppDatabase
 import com.vasilevkin.fragmentsroom.utils.DATABASE_NAME
-import org.koin.android.ext.koin.androidContext
-import org.koin.android.ext.koin.androidLogger
-import org.koin.core.context.startKoin
 
 
+@ExperimentalStdlibApi
 class MainApplication : Application() {
 
     companion object {
@@ -30,13 +26,6 @@ class MainApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-
-        // Start Koin
-        startKoin {
-            androidContext(this@MainApplication)
-            androidLogger()
-            modules(listOf(animalListModule, splashModule))
-        }
 
         // Create an InitializerBuilder
         val initializerBuilder = Stetho.newInitializerBuilder(this).also {

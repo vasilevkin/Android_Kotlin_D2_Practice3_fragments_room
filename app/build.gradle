@@ -69,9 +69,6 @@ dependencies {
     implementation "com.facebook.stetho:stetho:$stetho_version"
     implementation "com.facebook.stetho:stetho-okhttp3:$stetho_version"
 
-    // Koin for Android
-    implementation "org.koin:koin-android:$koin_version"
-
     // ImageView with zoom
     implementation "com.github.chrisbanes:PhotoView:$photoview_version"
 

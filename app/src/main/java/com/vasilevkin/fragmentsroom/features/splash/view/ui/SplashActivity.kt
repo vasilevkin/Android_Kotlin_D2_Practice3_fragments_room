@@ -9,12 +9,9 @@ import com.vasilevkin.fragmentsroom.MainApplication
 import com.vasilevkin.fragmentsroom.R
 import com.vasilevkin.fragmentsroom.base.BaseActivity
 import com.vasilevkin.fragmentsroom.features.animalList.view.ui.MainActivity
-import com.vasilevkin.fragmentsroom.features.photozoom.PhotoZoomViewModel
 import com.vasilevkin.fragmentsroom.features.splash.ISplashContract
 import com.vasilevkin.fragmentsroom.utils.SPLASH_SCREEN_SHOW_DELAY
 import io.reactivex.Completable
-import org.koin.android.ext.android.inject
-import org.koin.core.parameter.parametersOf
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
