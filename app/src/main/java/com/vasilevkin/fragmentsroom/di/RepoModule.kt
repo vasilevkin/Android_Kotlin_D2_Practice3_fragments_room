@@ -13,6 +13,7 @@ import dagger.Provides
 import javax.inject.Singleton
 
 
+@ExperimentalStdlibApi
 @Module
 class RepoModule {
 

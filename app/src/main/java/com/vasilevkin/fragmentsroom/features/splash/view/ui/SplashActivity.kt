@@ -5,15 +5,18 @@ import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
 import android.widget.ProgressBar
+import com.vasilevkin.fragmentsroom.MainApplication
 import com.vasilevkin.fragmentsroom.R
 import com.vasilevkin.fragmentsroom.base.BaseActivity
 import com.vasilevkin.fragmentsroom.features.animalList.view.ui.MainActivity
+import com.vasilevkin.fragmentsroom.features.photozoom.PhotoZoomViewModel
 import com.vasilevkin.fragmentsroom.features.splash.ISplashContract
 import com.vasilevkin.fragmentsroom.utils.SPLASH_SCREEN_SHOW_DELAY
 import io.reactivex.Completable
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
 
 /**
@@ -24,9 +27,12 @@ import java.util.concurrent.TimeUnit
 @ExperimentalStdlibApi
 class SplashActivity : BaseActivity<ISplashContract.Presenter>(), ISplashContract.View {
 
-    override val presenter: ISplashContract.Presenter by inject { parametersOf(this) }
+    @Inject
+    override lateinit var presenter: ISplashContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        (application as MainApplication).appComponent.inject(this)
+
         super.onCreate(savedInstanceState)
 
         makeFullScreen()
