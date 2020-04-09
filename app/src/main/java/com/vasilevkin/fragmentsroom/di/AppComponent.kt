@@ -11,7 +11,7 @@ import javax.inject.Singleton
 
 @ExperimentalStdlibApi
 @Singleton
-@Component(modules = [AppModule::class])
+@Component(modules = [AppModule::class, RepoModule::class])
 interface AppComponent {
 
     // Factory to create instances of the AppComponent
