@@ -18,11 +18,12 @@ import io.reactivex.subjects.BehaviorSubject
 import javax.inject.Inject
 
 
-class AnimalListViewModel @Inject constructor() : ViewModel() {
+class AnimalListViewModel @Inject constructor(private val animalRepository: IAnimalRepository) : ViewModel() {
 
-     var animalRepository: IAnimalRepository = AnimalRepository(
+//    @Inject lateinit var animalRepository: IAnimalRepository
+//            = AnimalRepository(
 //         LocalDataSource(AnimalsDao()), CloudDataSource()
-     )
+//     )
     private var disposable: Disposable? = null
 
     var animalList: BehaviorSubject<List<IComparableItem>> = BehaviorSubject.create()

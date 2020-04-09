@@ -71,7 +71,6 @@ class AnimalListFragment : Fragment() {
 
         (activity as AppCompatActivity).supportActionBar?.title = "Dogs list"
 
-        viewModel = ViewModelProviders.of(this).get(AnimalListViewModel::class.java)
         viewModel.view = activity as Context
     }
 

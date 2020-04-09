@@ -13,9 +13,10 @@ import com.vasilevkin.fragmentsroom.utils.getDogDataServiceCommon
 import io.reactivex.Single
 import org.json.JSONArray
 import org.json.JSONObject
+import javax.inject.Inject
 
 
-class AnimalRepository(
+class AnimalRepository @Inject constructor(
 //    private val localDataSource: ILocalDataSource,
 //    private val cloudDataSource: ICloudDataSource
 ) : IAnimalRepository {
