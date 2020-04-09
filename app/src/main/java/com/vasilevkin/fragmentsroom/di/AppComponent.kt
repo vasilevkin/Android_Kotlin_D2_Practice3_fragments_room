@@ -2,11 +2,13 @@ package com.vasilevkin.fragmentsroom.di
 
 import android.content.Context
 import com.vasilevkin.fragmentsroom.features.animalList.view.ui.AnimalListFragment
+import com.vasilevkin.fragmentsroom.features.dogdetails.DogDetailsFragment
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
 
 
+@ExperimentalStdlibApi
 @Singleton
 @Component(modules = [AppModule::class])
 interface AppComponent {
@@ -18,6 +20,6 @@ interface AppComponent {
         fun create(@BindsInstance context: Context): AppComponent
     }
 
-        @ExperimentalStdlibApi
-        fun inject(fragment: AnimalListFragment)
+    fun inject(fragment: AnimalListFragment)
+    fun inject(fragment: DogDetailsFragment)
 }

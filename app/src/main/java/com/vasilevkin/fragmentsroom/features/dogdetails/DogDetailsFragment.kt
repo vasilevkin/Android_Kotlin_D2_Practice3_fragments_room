@@ -14,10 +14,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.vasilevkin.fragmentsroom.R
 import com.vasilevkin.fragmentsroom.delegateadapter.diff.DiffUtilCompositeAdapter
 import com.vasilevkin.fragmentsroom.delegateadapter.diff.IComparableItem
+import com.vasilevkin.fragmentsroom.features.animalList.view.ui.MainActivity
 import com.vasilevkin.fragmentsroom.models.localModels.Animal
 import com.vasilevkin.fragmentsroom.utils.ANIMAL_DETAILS_MODEL
 import io.reactivex.disposables.Disposable
 import java.util.*
+import javax.inject.Inject
 
 @ExperimentalStdlibApi
 class DogDetailsFragment : Fragment() {
@@ -36,7 +38,7 @@ class DogDetailsFragment : Fragment() {
         fun onSelectedPhoto(animalPhoto: Animal)
     }
 
-    private lateinit var viewModel: DogDetailsViewModel
+    @Inject lateinit var viewModel: DogDetailsViewModel
 
     private var dogImages: List<IComparableItem> = emptyList()
     private lateinit var diffAdapter: DiffUtilCompositeAdapter
@@ -49,6 +51,8 @@ class DogDetailsFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+
+        (requireActivity() as MainActivity).appComponent.inject(this)
 
         if (context is OnPhotoSelected) {
             listener = context
@@ -70,9 +74,7 @@ class DogDetailsFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        viewModel = ViewModelProviders.of(this).get(DogDetailsViewModel::class.java)
         viewModel.animal = arguments?.getSerializable(ANIMAL_DETAILS_MODEL) as Animal
-
         viewModel.view = activity as Context
 
         (activity as AppCompatActivity).supportActionBar?.title = viewModel.animal?.title.orEmpty()

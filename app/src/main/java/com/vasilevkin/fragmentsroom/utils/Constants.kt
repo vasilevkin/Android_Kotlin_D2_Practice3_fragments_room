@@ -12,4 +12,4 @@ const val NUMBER_OF_ITEMS_IN_DOG_DETAILS_RECYCLER = 1
 const val NUMBER_OF_UNIQUE_ITEMS = 6
 const val EMPTY_ANIMAL_ARRAY_SIZE = 20
 const val DATABASE_NAME = "animals-db"
-val CACHE_VALID_TIME_IN_MILLIS = TimeUnit.DAYS.toMillis(0)
+val CACHE_VALID_TIME_IN_MILLIS = TimeUnit.DAYS.toMillis(1)

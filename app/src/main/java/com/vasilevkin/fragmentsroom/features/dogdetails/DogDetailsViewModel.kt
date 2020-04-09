@@ -12,9 +12,12 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.internal.schedulers.IoScheduler
 import io.reactivex.subjects.BehaviorSubject
+import javax.inject.Inject
+import javax.inject.Singleton
 
 
-class DogDetailsViewModel : ViewModel() {
+@Singleton
+class DogDetailsViewModel @Inject constructor() : ViewModel() {
 
     var animal: Animal? = null
 
