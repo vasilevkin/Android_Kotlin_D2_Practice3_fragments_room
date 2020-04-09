@@ -1,10 +1,24 @@
 # Android_Kotlin_D2_Practice3_fragments_room
 RecyclerView multi-type item, https://dog.ceo/dog-api/ , https://thecatapi.com/, fragments, room, repository
 
+<table>
+<tbody>
+<tr>
+<td>
 <img src="https://github.com/vasilevkin/Android_Kotlin_D2_Practice3_fragments_room/blob/master/_screenShots/Screenshot%202020-03-29%20at%2011.04.29.png" width="200">
+</td>
+<td>
 <img src="https://github.com/vasilevkin/Android_Kotlin_D2_Practice3_fragments_room/blob/master/_screenShots/Screenshot%202020-03-29%20at%2011.04.41.png" width="200">
+</td>
+<td>
 <img src="https://github.com/vasilevkin/Android_Kotlin_D2_Practice3_fragments_room/blob/master/_screenShots/Screenshot%202020-03-29%20at%2011.05.08.png" width="200">
+</td>
+<td>
 <img src="https://github.com/vasilevkin/Android_Kotlin_D2_Practice3_fragments_room/blob/master/_screenShots/Screenshot%202020-03-29%20at%2011.05.51.png" width="200">
+</td>
+</tr>
+</tbody>
+</table>
 
 
 ### Technology:
